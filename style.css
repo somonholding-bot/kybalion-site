@@ -11,7 +11,10 @@ header.top .wrap{display:flex;align-items:center;justify-content:space-between;h
 nav.main a{margin-left:20px;text-decoration:none;color:var(--mut);font-weight:600;font-size:.95rem}
 .callbtn{display:none;margin-left:16px;padding:9px 14px;border-radius:999px;border:1.5px solid var(--brand);color:var(--brand);font-weight:700;text-decoration:none}
 .callbtn.on{display:inline-block}
-.hero{background:linear-gradient(180deg,#eaf2fa 0%,var(--bg) 100%);padding:44px 0 36px}
+.hero{position:relative;overflow:hidden;background:#0d2137;padding:64px 0 56px;color:#fff}
+.heroimg{position:absolute;inset:0;background:url(https://images.unsplash.com/photo-1558898268-92ae44e7670e?auto=format&fit=crop&w=1800&q=70) center/cover no-repeat}
+.heroimg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,25,44,.88) 0%,rgba(9,25,44,.7) 45%,rgba(9,25,44,.25) 100%)}
+.hero .wrap{position:relative}.hero .lead{color:#dbe6f1}.hero .pill{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#fff}.hero .card{color:var(--ink)}.talk{color:#dbe6f1;margin:6px 0 0}.talk .callbtn{border-color:#fff;color:#fff;margin-left:6px}
 .hero .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
 h1{font-size:clamp(2rem,5.2vw,3.1rem);line-height:1.1;margin:0 0 14px;letter-spacing:-.02em}
 .lead{font-size:1.1rem;color:var(--mut);margin:0 0 22px}
@@ -44,3 +47,7 @@ details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:
 .partners{display:none}.partners.on{display:block}
 footer{background:#0d2137;color:#b8c7d6;padding:36px 0;font-size:.85rem}footer a{color:#dbe7f2}footer p{margin:0 0 10px}
 @media(max-width:760px){.hero .grid,.steps,.trust{grid-template-columns:1fr}.row{flex-direction:column}nav.main a{margin-left:12px}.g2{grid-template-columns:1fr}}
+
+.soft{border:1px solid var(--line);background:#f3f7fb;border-radius:10px;padding:14px 16px;font-size:.95rem}
+.flinks a{margin-right:18px}
+@media(max-width:760px){.hero{padding:40px 0 36px}.heroimg:after{background:rgba(9,25,44,.78)}}

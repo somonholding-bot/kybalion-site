@@ -20,7 +20,7 @@ function render(){
  if(step===5)h='<h2 style="margin-top:0">How can professionals reach you?</h2><div class="field"><label>Full name</label><input id="f_name" autocomplete="name" value="'+esc(data.name)+'"></div><div class="field"><label>Mobile phone</label><input id="f_phone" type="tel" autocomplete="tel" inputmode="tel" value="'+esc(data.phone)+'"></div><div class="field"><label>Email</label><input id="f_email" type="email" autocomplete="email" value="'+esc(data.email)+'"></div><div class="err" id="e"></div><button class="cta" id="next">Continue</button>';
  if(step===6){var k=C.CONSENT;h='<h2 style="margin-top:0">Review and submit</h2><p class="fine" style="margin-top:0">ZIP '+esc(data.zip)+' · '+esc(data.year)+' '+esc(data.make)+' '+esc(data.model)+'</p>';
   if(consentReady())h+='<label class="consent"><input type="checkbox" id="f_consent"><span>'+k.TEXT+'</span></label><p class="fine">'+k.BUYER_DISCLOSURE+'</p><div class="err" id="e"></div><button class="cta" id="submit" style="width:100%">Submit</button>';
-  else h+='<div class="notice"><strong>Preview.</strong> This form is not accepting requests yet, and nothing you enter is sent anywhere.</div><button class="cta" id="submit" style="width:100%;margin-top:14px" disabled>Submit unavailable in preview</button>';
+  else h+='<div class="soft"><strong>Thanks for your interest.</strong> We are not accepting online requests in your area just yet, so nothing has been submitted or stored. Please check back soon.</div>';
   var tk=(C.CALL.enabled&&window.getTracking)?getTracking():null;if(tk&&tk.number)h+='<p class="fine">Prefer to talk? <a class="callbtn on" href="tel:'+esc(tk.number)+'">'+esc(tk.number)+'</a></p>'}
  if(step>0&&step<7)h+='<div><button class="ghost" id="back" type="button">&larr; Back</button></div>';
  b.innerHTML=h;window.scrollTo({top:$('#flow').offsetTop-70,behavior:'smooth'});
@@ -41,7 +41,7 @@ function submit(){
  if(!$('#f_consent').checked)return err('Please confirm your consent to continue.');
  var rec={zip:data.zip,insurance_status:data.insured,vehicle:{year:+data.year,make:data.make,model:data.model},driver:{age_range:data.age},coverage_timing:data.timing,full_name:data.name,phone:data.phone,email:data.email,
   source:utm().utm_source||'direct',campaign:utm().utm_campaign,utm:utm(),consent:{version:C.CONSENT.VERSION,text_shown:C.CONSENT.TEXT,action:'checkbox',timestamp:new Date().toISOString(),ip:'server',url:location.href}};
- if(C.MODE!=='live'||!C.ENDPOINT){try{localStorage.setItem('kybalion_test_lead',JSON.stringify(rec))}catch(e){}return done('Test mode: saved locally on this device only. Nothing was sent.')}
+ if(C.MODE!=='live'||!C.ENDPOINT){return done('Thanks. We are not accepting online requests in your area just yet, so nothing has been submitted.')}
  fetch(C.ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(rec)}).then(function(r){if(!r.ok)throw 0;done('Thank you. A licensed insurance professional may contact you shortly.')}).catch(function(){err('Something went wrong. Please try again.')})}
 function done(m){$('#stepbody').innerHTML='<h2 style="margin-top:0">All set</h2><p>'+esc(m)+'</p>';$('#bar').style.width='100%'}
 $('#zipform').addEventListener('submit',function(e){e.preventDefault();var z=$('#zip').value.trim();if(!/^\d{5}$/.test(z)){$('#ziperr').textContent='Enter a valid 5-digit ZIP code.';return}
