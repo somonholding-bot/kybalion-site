@@ -4,7 +4,7 @@ window.SITE_CONFIG = {
   DOMAIN: 'kybalionus.com',
   MODE: 'preview', // 'preview' = nothing is submitted anywhere. 'live' requires ENDPOINT + consent language.
   ENDPOINT: '',
-  CONTACT_EMAIL: '', // e.g. hello@kybalionus.com once the mailbox exists
+  CONTACT_EMAIL: 'help@kybalionus.com', // e.g. hello@kybalionus.com once the mailbox exists
   CONSENT: { VERSION: '', TEXT: '', BUYER_DISCLOSURE: '', CALL_CONSENT_TEXT: '', SMS_CONSENT_TEXT: '' },
   AUTHORIZED_PARTNERS: [],
   SHOW_APPROVED_PARTNERS: false, // logos/carriers only after a buyer authorizes them in writing
